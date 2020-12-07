@@ -1,0 +1,19 @@
+/* Your styles should be mobile-first and responsive */
+
+/** 
+  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
+  *
+  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
+  *
+*/
+
+button {
+  margin: 5px;
+}
+
+.start-page, .questions-page, .answer-page, .quiz-complete, .quiz-status {
+  padding: 10px;
+  border: solid 1px;
+  margin: 5px;
+  background: gray;
+}
