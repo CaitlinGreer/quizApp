@@ -38,11 +38,12 @@ form {
   text-align: center;
   font-family: 'Big Shoulders Display', sans-serif;
   color: #608a91;
-  font-size: 30px;
+  font-size: 25px;
 } 
 
 .start-text .answer-container {
   margin-top: -10%;
+  padding-top: 5%;
 }
 
 #restart-quiz {
@@ -51,7 +52,7 @@ form {
 
 ol {
   text-align: justify;
-  font-size: 30px;
+  font-size: 23px;
 }
 .tracker {
 
@@ -106,4 +107,7 @@ button .tracker{
   font-size: 30px;
 }
 
+ol {
+  font-size: 30px;
+}
 }
