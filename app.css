@@ -1,0 +1,105 @@
+/* Your styles should be mobile-first and responsive */
+
+/** 
+  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
+  *
+  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
+  *
+*/
+
+* {
+  box-sizing: border-box;
+}
+header {
+  padding: 105px, 0, 0 ,0;
+}
+
+h1{
+  font-family: Cookie, fantasy;
+  text-align: center;
+  color: #608a91;
+  font-size: 45px;
+  margin-bottom: -1%;
+  text-shadow: 2px 2px 8px #b8f2e6;
+}
+body {
+  margin: 0 auto;
+  background: cover;
+  background-image: url("images/mickeybackground.jpeg");
+  background-color: #e7e3de;
+}
+
+form {
+  border: 5px solid #f4f3ee;
+  background: rgba(244,243,238,0.6);
+  border-radius: 10px; 
+  margin: 10px 25px;
+  padding: 0% 2% 2% 2%;
+  text-align: center;
+  font-family: 'Amatic SC', sans-serif;
+  color: #608a91;
+  font-size: 30px;
+} 
+
+.start-text .question-text {
+  margin-top: -8%;
+}
+
+#restart-quiz {
+  text-align: center;
+}
+
+ol {
+  text-align: justify;
+  font-size: 30px;
+}
+.tracker {
+
+  border: 5px solid #f4f3ee;
+  background: rgba(244,243,238,0.6);
+  border-radius: 10px; 
+  margin: 10px 25px;
+  padding: 0% 3%;
+  font-family: 'Amatic SC', sans-serif;
+  color: #608a91;
+  font-size: 28px;
+}
+.tracker-flex {
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  align-content: center;
+}
+
+//.split-para span { 
+ // float:right;
+ // margin-right: 3%;
+ // }
+
+button {
+  background: #608a91;
+  color: #f4f3ee;
+  font-size: 30px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.flex-container {
+  display: flex;
+  margin-top: -5%;
+  justify-content: center;
+}
+
+
+@media (min-width: 600px) {
+
+ h1 {
+   font-size: 75px;
+ }
+
+ form {
+   font-size: 40px;
+ }
+
+ 
+}
