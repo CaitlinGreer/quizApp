@@ -102,7 +102,7 @@ function generateQuestionAndAnswers(questionNumber){
         <p>${store.questions[questionNumber].question}</p>
         <div class="flex-container">
         <div>
-        <ol type="A">
+        <ol>
           ${generateQuizAnswers(questionNumber)}
         </ol>
         </div>
@@ -130,9 +130,9 @@ function generateQuizAnswers(questionNumber) {
   let answers = '';
   for (i = 0; i < store.questions[questionNumber].answers.length; i++) {
     answers += `
-    <div id="answer-container">
-      <input type="radio" id="answer-rad${i}" name="answer-rad" value="${store.questions[questionNumber].answers[i]}" required>
-      <label for="${i}">${store.questions[questionNumber].answers[i]}</label>
+    <div class="answer-container">
+      <input type="radio" id="answer-rad${i}" name="answer-rad" value="${store.questions[questionNumber].answers[i]}" required="required">
+      <label for="answer-rad${i}">${store.questions[questionNumber].answers[i]}</label>
         <br>
     </div>`;
      } 
@@ -142,6 +142,7 @@ function generateQuizAnswers(questionNumber) {
 //check selected answer with correctAnswer and return if the answer is correct or incorrect, add points to score accordingly
 function generateAnswerResults(answer) {
     let correctAnswer = store.questions[store.questionNumber].correctAnswer;
+
 
     if ($('input[name="answer-rad"]:checked', '#mainForm').val() === correctAnswer) {
     
@@ -154,8 +155,7 @@ function generateAnswerResults(answer) {
         </div>
     </form>
       `);
-      store.questionNumber++;
-      store.score++;
+      
    }
    else if ($('input[name="radios"]:checked', '#mainForm').val() != correctAnswer){
      
@@ -170,7 +170,6 @@ function generateAnswerResults(answer) {
       </form>
      `);
      
-     store.questionNumber++;
    }
  }
  
@@ -196,9 +195,6 @@ function generateResultsPage() {
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 function renderMain(){
-  console.log('renderMain');
-  console.log(`store.quizStarted: ${store.quizStarted}`);
-  console.log(`store.questionNumber: ${store.questionNumber}`)
 
     if (store.quizStarted === false) {
      $('main').html(generateStartScreen());
@@ -222,7 +218,6 @@ function handleStartClick(){
     event.preventDefault();
     store.quizStarted = true;
     renderMain();
-    console.log('start button pressed'); //way to start the count
   });
   
 
@@ -230,8 +225,7 @@ function handleStartClick(){
 
 //handles click of the next button
 function handleNextClick() {
-  $('.next-btn > button').on('click', (event) =>{
-      console.log('next button pressed');
+  $('.next-btn > button').on('click', (event) =>{ 
       event.preventDefault();
       renderMain();
   });
@@ -239,15 +233,28 @@ function handleNextClick() {
 
 //handles submit question answer 
 function handleQuestionSubmission(){
-  // $('.submit-btn > .submit').on('click', (event) => {
   $('main').on('click','#submit',function(){    
     event.preventDefault();
-    console.log('submit button pressed');
+    let correctAnswer = store.questions[store.questionNumber].correctAnswer;
+    
+    if ($('input[name="answer-rad"]:checked', '#mainForm').val() === undefined) {
+      alert("Hey! You forgot to select an answer!");
+      return;
+      
+    }
+    if ($('input[name="answer-rad"]:checked', '#mainForm').val() === correctAnswer) {
+     store.score++;
+    } 
+
     if (store.questionNumber <= 5) {
     generateAnswerResults();
     handleNextClick();
     }
+     
+    store.questionNumber++; 
+
   });
+
 }
 
 function restartQuiz(){
